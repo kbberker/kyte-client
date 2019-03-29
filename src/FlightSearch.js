@@ -101,6 +101,9 @@ class FlightSearch extends Component {
             <option value="5">5</option>
           </select>
         </div>
+        <div>
+          <button onClick={() => this.props.search(this.state)}>SEARCH</button>
+        </div>
       </div>
     );
   }
