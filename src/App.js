@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import FlightSearch from "./FlightSearch";
-
 import "./App.css";
 
 class App extends Component {
