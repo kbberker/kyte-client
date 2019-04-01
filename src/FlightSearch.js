@@ -19,8 +19,6 @@ class FlightSearch extends Component {
     });
   };
 
-  // TODO use >>> date.toISOString().slice(0, 10) before making fetch req
-
   handleDepartureDateChange = date => {
     // debugger;
     this.setState({ departureDate: date });
@@ -32,6 +30,11 @@ class FlightSearch extends Component {
 
   handleNumOfPass = event => {
     this.setState({ numOfPass: event.target.value });
+  };
+
+  handleSearchClick = () => {
+    this.state.departureDate - this.state.returnDate < 0 &&
+      this.props.search(this.state);
   };
 
   render() {
@@ -102,7 +105,12 @@ class FlightSearch extends Component {
           </select>
         </div>
         <div>
-          <button onClick={() => this.props.search(this.state)}>SEARCH</button>
+          <button
+            onClick={() => this.handleSearchClick()}
+            disabled={this.props.disableButton}
+          >
+            SEARCH
+          </button>
         </div>
       </div>
     );

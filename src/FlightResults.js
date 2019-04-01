@@ -14,17 +14,12 @@ class FlightResults extends Component {
     const flightOffers = this.listOfFlightOffers(flights, offers);
 
     return flightOffers;
-    // For each offer
-    // find departing flight details
-    // find return flight details
-    // find the total price
-    // send that info to a FlightOfferComponent
   };
 
   listOfFlightOffers = (flights, offers) => {
     return offers.map(offer => {
       // console.log(flights, offers);
-      const departureJourney = flights.filter(
+      const outboundJourney = flights.filter(
         flight => flight.id === offer.journeys[0].flightIds[0]
       )[0];
       const returnJourney = flights.filter(
@@ -35,7 +30,7 @@ class FlightResults extends Component {
 
       return (
         <FlightOffer
-          depJourney={departureJourney}
+          outboundJourney={outboundJourney}
           retJourney={returnJourney}
           totalPrice={totalPrice}
           passengers={passengers}
@@ -45,7 +40,21 @@ class FlightResults extends Component {
   };
 
   render() {
-    return <div>{this.renderFlightOffers()}</div>;
+    const { departure, arrival } = this.props.searchResults.destinations[0];
+    const { departureDate, returnDate } = this.props;
+
+    return (
+      <div>
+        <h1>Results</h1>
+        <h3>
+          From {departure} to {arrival}
+        </h3>
+        <h3>
+          Travel Dates: {departureDate} to {returnDate}
+        </h3>
+        {this.renderFlightOffers()}
+      </div>
+    );
   }
 }
 
