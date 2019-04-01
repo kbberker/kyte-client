@@ -39,7 +39,7 @@ class FlightSearch extends Component {
       <div>
         <h1>FIND FLIGHTS!</h1>
         <div>
-          <h4>Departure Airport: </h4>
+          <h4>From: </h4>
           <div>
             <label>
               <input

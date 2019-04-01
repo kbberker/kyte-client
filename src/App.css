@@ -31,3 +31,23 @@
     transform: rotate(360deg);
   }
 }
+
+.offer-card {
+  display: flex;
+  justify-content: space-evenly;
+  border: solid blue;
+  border-width: 2px;
+  background-color: white;
+  margin: 0.5rem 5rem;
+}
+
+.journey-info {
+  display: grid;
+  align-self: baseline;
+  grid-template-columns: repeat(2, 7rem);
+  grid-template-rows: auto 1fr;
+}
+
+.journey-info h3 {
+  grid-column: 1 / -1;
+}
