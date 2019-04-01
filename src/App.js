@@ -4,7 +4,9 @@ import FlightResults from "./FlightResults";
 import "./App.css";
 
 class App extends Component {
-  state = {};
+  state = {
+    searchResults: null
+  };
 
   searchForFlights = searchData => {
     const passenger = { type: "adult" };
@@ -28,14 +30,19 @@ class App extends Component {
       })
     })
       .then(resp => resp.json())
-      .then(data => console.log(data));
+      .then(data => {
+        console.log(data);
+        this.setState({ searchResults: data[1] });
+      });
   };
 
   render() {
     return (
       <div className="App">
         <FlightSearch search={this.searchForFlights} />
-        {/* <FlightResults /> */}
+        {this.state.searchResults !== null ? (
+          <FlightResults searchResults={this.state.searchResults} />
+        ) : null}
       </div>
     );
   }
